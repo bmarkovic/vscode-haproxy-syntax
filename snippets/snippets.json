@@ -1,0 +1,94 @@
+{
+  "Frontend": {
+    "prefix": "frontend",
+    "description": "Create new frontend entry..",
+    "body": [
+      "frontend ${1:name}",
+      "\tbind ${2:ip}:${3:port}",
+      "\tmode ${4:mode}\n",
+      "\tdefault_backend ${5:backend}"
+    ]
+  },
+  "Backend": {
+    "prefix": "backend",
+    "description": "Create new backend entry..",
+    "body": [
+      "backend ${1:name}",
+      "\tbalance ${2:algorythm}\n",
+      "\tserver ${3:server_name} ${4:server_ip}:${5:server_port}"
+    ]
+  },
+  "Listener": {
+    "prefix": "listen",
+    "description": "Create new listener entry..",
+    "body": [
+      "listen ${1:name}",
+      "\tbind ${2:ip}:${3:port}",
+      "\tmode ${4:mode}\n",
+      "\tserver ${5:server_name} ${6:server_ip}:${7:server_port}"
+    ]
+  },
+  "Bind Ssl": {
+    "prefix": "binds",
+    "description": "Create new SSL bind entry..",
+    "body": [
+      "bind ${1:ip}:${2:port} ssl crt ${3:pem_file_path}"
+    ]
+  },
+  "Starter Template": {
+    "prefix": "global",
+    "description": "Fill in the blanks starter tamplate for Haproxy.cfg..",
+    "body": [
+      "global",
+      "\tlog /dev/log local0 notice",
+      "\tstats socket /var/run/haproxy/default.admin.sock mode 660 level admin",
+      "\tstats timeout 30s",
+      "\tuser haproxy",
+      "\tgroup haproxy",
+      "\tdaemon\n",
+      "\t# Default ciphers to use on SSL-enabled listening sockets.",
+      "\tssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS",
+      "\tssl-default-bind-options no-sslv3\n\n",
+      "defaults",
+      "\tlog global",
+      "\tmode http",
+      "\ttimeout connect 5000",
+      "\ttimeout client  50000",
+      "\ttimeout server  50000\n\n"
+    ]
+  },
+  "User List": {
+    "prefix": "userlist",
+    "description": "Create new user list..",
+    "body": [
+      "userlist ${1:name}",
+      "\tuser ${2:name}"
+    ]
+  },
+  "Stats Backend": {
+    "prefix": "stats",
+    "description": "Create new HTML Stats backend..",
+    "body": [
+      "backend ${1:name}",
+      "\tstats enable",
+      "\tstats admin if localhost",
+      "\tstats uri /stats level admin"
+    ]
+  },
+  "ACL User List": {
+    "prefix": "acluser",
+    "description": "Create new user list based ACL..",
+    "body": [
+      "acl acl_${1:acl_name} http_auth(${2:userlist_name})",
+      "http-request auth realm \"${3:auth_realm}\" if !acl_${1:acl_name}"
+    ]
+  },
+  "ACL Path": {
+    "prefix": "aclpath",
+    "description": "Create new path based ACL..",
+    "body": [
+      "acl acl_${1:name} path_beg (${2:path})",
+      "use_backend ${1:name} if !acl_${1:name}"
+    ]
+  }
+}

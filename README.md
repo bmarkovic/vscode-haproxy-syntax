@@ -1,10 +1,17 @@
 # HAProxy for Visual Studio Code
 
-This is the syntax highlighter for HAProxy configuration files, based on [sublime-haproxy](https://github.com/ramonfritsch/sublime-haproxy) Sublime Text package.
+This is the syntax highlighter for HAProxy/HAPEE configuration files, based on [sublime-haproxy](https://github.com/ramonfritsch/sublime-haproxy) Sublime Text package.
+
+See:
+https://www.haproxy.com/ (HAPEE)
+http://www.haproxy.org/ (HAProxy)
+
 
 ## Features
 
-At the moment, the extension is just a repackaged syntax highlighter for HAProxy configuration files. In the future I do plan adding some snippets/templates for *frontends, backends, listeners, ACLs* and other common syntax constructs in config files. Considering how infrequently these files are edited, and the complexity of developing "fancier" language support (like validation or code completion) for VS.Code, I don't plan on developing any of those in the foreseeable future.
+- Syntax highlighting for HAProxy configuration files (`haproxy.cfg`), greatly expanded from Sublime Original, and adjusted to better fit VS Code coloring schemas
+- Basic snippets for most common blocks of configuration text i.e. *frontends, backends, listeners, acls, userlists*
+- A *global/default* config starter template -- available as a snippet.
 
 ## Known Issues
 
@@ -14,8 +21,11 @@ Currently it will automatically triger only on files called "haproxy.cfg" verbat
 
 ### 0.1.1
 
-Integrated the changes from https://github.com/nvtkaszpir/sublime-haproxy
+* Integrated the changes from https://github.com/nvtkaszpir/sublime-haproxy
+* Simplified regexes for better maintainability
+* Additional syntax
+* Snippets for common configuration blocks
 
-### 0.1.0
+### Unreleased
 
 Initial version of HAProxy for Visual Studio Code -- just repackaged sublime-haproxy
