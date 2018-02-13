@@ -1,0 +1,31 @@
+{
+    "name": "haproxy",
+    "displayName": "HAProxy Syntax",
+    "description": "HAProxy Configuration Syntax Highlighter",
+    "version": "0.1.0",
+    "publisher": "bmarkovic",
+    "engines": {
+        "vscode": "^1.20.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "haproxy",
+            "aliases": ["HAProxy", "haproxy", "Haproxy"],
+            "extensions": ["haproxy.cfg"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "haproxy",
+            "scopeName": "source.haproxy",
+            "path": "./syntaxes/Haproxy.tmLanguage"
+        }]
+    },
+    "icon": "icon.png",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/bmarkovic/vscode-haproxy.git"
+    }
+}
