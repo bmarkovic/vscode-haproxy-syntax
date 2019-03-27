@@ -55,14 +55,14 @@
       <!-- Sections -->
       <dict>
         <key>match</key>
-        <string>\b^(aggregations|backend|defaults|frontend|global|listen|peers|userlist)\b</string>
+        <string>\b^(aggregations|backend|defaults|frontend|global|listen|peers|resolvers|userlist)\b</string>
         <key>name</key>
         <string>support.class</string>
       </dict>
       <!-- Keywords -->
       <dict>
         <key>match</key>
-        <string>\b(acl|appsession|backlog|balance|bind|bind-process|block|ca-base|chroot|compression|cookie|cpu-map|crt-base|daemon|default-server|default_backend|description|disabled|dispatch|enabled|errorfile|errorloc|errorloc302|errorloc303|force-persist|from|fullconn|grace|hash-type|id|ignore-persist|lua-load|log-format|log|mode|monitor\s+fail|monitor-net|monitor-uri|nbproc|peer|persist\s+rdp-cookie|rate-limit\s+sessions|redirect|reqadd|reqallow|reqdel|reqdeny|reqiallow|reqidel|reqideny|reqipass|reqirep|reqisetbe|reqitarpit|reqpass|reqrep|reqsetbe|reqtarpit|retries|rspadd|rspdel|rspdeny|rspidel|rspideny|rspirep|rsprep|server|source|ssl-default-bind-(ciphers|options)|to|unique-id-(format|header)|use(_backend|-server))\b</string>
+        <string>\b(accepted_payload_size|acl|appsession|backlog|balance|bind|bind-process|block|ca-base|chroot|compression|cookie|cpu-map|crt-base|daemon|default-server|default_backend|description|disabled|dispatch|enabled|errorfile|errorloc|errorloc302|errorloc303|force-persist|from|fullconn|grace|hash-type|hold|id|ignore-persist|lua-load|log-format|log|mode|monitor\s+fail|monitor-net|monitor-uri|nameserver|nbproc|peer|persist\s+rdp-cookie|rate-limit\s+sessions|redirect|reqadd|reqallow|reqdel|reqdeny|reqiallow|reqidel|reqideny|reqipass|reqirep|reqisetbe|reqitarpit|reqpass|reqrep|reqsetbe|reqtarpit|resolution_pool_size|resolve_retries|retries|rspadd|rspdel|rspdeny|rspidel|rspideny|rspirep|rsprep|server|source|ssl-default-bind-(ciphers|options)|timeout|to|unique-id-(format|header)|use(_backend|-server))\b</string>
         <key>name</key>
         <string>keyword</string>
       </dict>
@@ -145,7 +145,7 @@
       <!-- Subcommand functions / sub-keywords / known parameters -->
       <dict>
         <key>match</key>
-        <string>\b(add-header|admin|append-slash|backup|ca-file|check|code|connect|crt|debug|del-header|drop-query|error-limit|found|group|http|https|insecure-password|len|level|maxconn|mark-down|notice|no-sslv3|on-error|on-marked-up|optional|origin|path_beg|port|prefix|rise|roundrobin|scheme|set-header|shutdown-backup-sessions|ssl|status|tcp|tune|use-service|user|verify)\b</string>
+        <string>\b(add-header|admin|append-slash|backup|ca-file|check|code|connect|crt|debug|del-header|drop-query|error-limit|found|group|http|https|insecure-password|len|level|maxconn|mark-down|notice|no-sslv3|nx|obsolete|on-error|on-marked-up|optional|origin|other|path_beg|port|prefix|refused|resolve|retry|rise|roundrobin|scheme|set-header|shutdown-backup-sessions|ssl|status|tcp|timeout|tune|use-service|user|valid|verify)\b</string>
         <key>name</key>
         <string>support.variable</string>
       </dict>
