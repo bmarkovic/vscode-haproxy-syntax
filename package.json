@@ -1,37 +1,52 @@
 {
-    "name": "haproxy",
-    "displayName": "HAProxy",
-    "description": "HAProxy Configuration Syntax Highlighter and Snippets",
-    "version": "0.1.1",
-    "publisher": "bmarkovic",
-    "engines": {
-        "vscode": "^1.20.0"
-    },
-    "categories": [
-        "Languages",
-        "Snippets"
-    ],
-    "contributes": {
-        "languages": [{
-            "id": "haproxy",
-            "aliases": ["HAProxy", "haproxy", "Haproxy"],
-            "extensions": ["haproxy.cfg"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "haproxy",
-            "scopeName": "source.haproxy",
-            "path": "./syntaxes/Haproxy.tmLanguage"
-        }],
-        "snippets": [
-          {
-              "language": "haproxy",
-              "path": "./snippets/snippets.json"
-          }
-      ]
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/bmarkovic/vscode-haproxy.git"
-    }
+	"name": "haproxy",
+	"displayName": "HAProxy",
+	"description": "HAProxy Configuration Syntax Highlighter and Snippets",
+	"version": "0.1.2",
+	"publisher": "bmarkovic",
+	"engines": {
+		"vscode": "^1.32.3"
+	},
+	"categories": [
+		"Languages",
+		"Snippets"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "haproxy",
+				"aliases": [
+					"HAProxy",
+					"haproxy",
+					"Haproxy"
+				],
+				"extensions": [
+					"haproxy.cfg"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "haproxy",
+				"scopeName": "source.haproxy",
+				"path": "./syntaxes/Haproxy.tmLanguage"
+			}
+		],
+		"snippets": [
+			{
+				"language": "haproxy",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bmarkovic/vscode-haproxy.git"
+	},
+	"__metadata": {
+		"id": "9e9271b1-9234-4261-a069-c256db50fb2c",
+		"publisherDisplayName": "Bojan Markovic",
+		"publisherId": "d46cf0bb-cd24-4a08-b329-3d53317f53d7"
+	}
 }
