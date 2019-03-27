@@ -2,6 +2,8 @@
 
 This is the syntax highlighter for HAProxy/HAPEE configuration files, based on [sublime-haproxy](https://github.com/ramonfritsch/sublime-haproxy) Sublime Text package.
 
+> Note: All changes to the `Haproxy.tmLanguage` file need to go through the [upstream project](https://github.com/ramonfritsch/sublime-haproxy) first.
+
 See:
 https://www.haproxy.com/ (HAPEE)
 http://www.haproxy.org/ (HAProxy)
