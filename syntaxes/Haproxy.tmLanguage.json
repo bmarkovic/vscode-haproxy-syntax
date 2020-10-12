@@ -1,0 +1,819 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "HAProxy",
+    "scopeName": "source.haproxy",
+    "patterns": [
+      {
+        "include": "#keywords"
+      },
+      {
+        "include": "#strings"
+      }
+    ],
+    "repository": {
+      "keywords": {
+        "patterns": [
+          {
+            "match": "^#.*$",
+            "name": "comment.line.number-sign.haproxy-config"
+          },
+          {
+            "match": "(?<=\\s)#.*$",
+            "name": "comment.line.number-sign.haproxy-config"
+          },
+          {
+            "match": "(\\s)(\\/\\S+)",
+            "captures": {
+              "2": { "name": "string.unquoted" }
+            }
+          },
+          {
+            "match": "(\\s)(\\/\\S+)$",
+            "captures": {
+              "2": { "name": "string.unquoted" }
+            }
+          },
+          {
+            "match": "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+",
+            "name": "string.unquoted"
+          },
+          {
+            "match": "(\\\".*?\\\")",
+            "name": "string.quoted.double"
+          },
+          {
+            "match": "(\\'.*?\\')",
+            "name": "string.quoted.single"
+          },
+          {
+            "match": "^(dynamic-update|fcgi-app|backend|cache|defaults|frontend|global|listen|mailers|peers|program|resolvers|ruleset|userlist|aggregations|director|ring|http-errors)([\\t ]+)(\\S+)([\\t ]+)([0-9]+(?:\\.[0-9]+){3}|\\*)(:[0-9]+)?([\\t ]?)$",
+            "captures": {
+              "1": { "name": "keyword.name.section.haproxy" },
+              "3": { "name": "variable.other.section.haproxy" },
+              "5": { "name": "constant.numeric" },
+              "6": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "^(dynamic-update|fcgi-app|backend|cache|defaults|frontend|global|listen|mailers|peers|program|resolvers|ruleset|userlist|aggregations|director|ring|http-errors)([\\t ]+)([0-9]+(?:\\.[0-9]+){3}|\\*)(:[0-9]+)?([\\t ]?)$",
+            "captures": {
+              "1": { "name": "keyword.name.section.haproxy" },
+              "3": { "name": "constant.numeric" },
+              "4": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "^(dynamic-update|fcgi-app|backend|cache|defaults|frontend|global|listen|mailers|peers|program|resolvers|ruleset|userlist|aggregations|director|ring|http-errors)([\\t ]+)(\\S+)([\\t ]?)$",
+            "captures": {
+              "1": { "name": "keyword.name.section.haproxy" },
+              "3": { "name": "variable.other.section.haproxy" }
+            }
+          },
+          {
+            "match": "^(dynamic-update|fcgi-app|backend|cache|defaults|frontend|global|listen|mailers|peers|program|resolvers|ruleset|userlist|aggregations|director|ring|http-errors)([\\t ]*)$",
+            "captures": {
+              "1": { "name": "keyword.name.section.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(log-stderr|log)([\\t ]+)(global)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(log)([\\t ]+)(stdout|stderr)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(log-stderr|docroot|index)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(maxlen|format|size)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(no)([\\t ]+)(option)([\\t ]+)(abortonclose|accept-invalid-http-request|accept-invalid-http-response|allbackups|checkcache|clitcpka|contstats|dontlog-normal|dontlognull|h1-case-adjust-bogus-client|h1-case-adjust-bogus-server|http-buffer-request|http-ignore-probes|http-keep-alive|http-no-delay|http-pretend-keepalive|http-server-close|http-use-proxy-header|httpclose|http_proxy|independent-streams|log-health-checks|log-separate-errors|logasap|nolinger|persist|prefer-last-server|redispatch|socket-stats|splice-auto|splice-request|splice-response|srvtcpka|tcp-smart-accept|tcp-smart-connect|transparent)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "keyword.language.haproxy" },
+              "6": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(option)([\\t ]+)(abortonclose|accept-invalid-http-request|accept-invalid-http-response|allbackups|checkcache|clitcpka|contstats|dontlog-normal|dontlognull|forwardfor|h1-case-adjust-bogus-client|h1-case-adjust-bogus-server|http-buffer-request|http-ignore-probes|http-keep-alive|http-no-delay|http-pretend-keepalive|http-server-close|http-use-proxy-header|httpchk|httpclose|httplog|http_proxy|independent-streams|ldap-check|external-check|log-health-checks|log-separate-errors|logasap|mysql-check|nolinger|originalto|persist|pgsql-check|smtp-check|prefer-last-server|redispatch|redis-check|smtpchk|socket-stats|splice-auto|splice-request|splice-response|spop-check|srvtcpka|ssl-hello-chk|tcp-check|tcp-smart-accept|tcp-smart-connect|tcpka|tcplog|transparent)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(no)([\\t ]+)(option)([\\t ]+)(get-values|keep-conn|mpxs-conns)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "keyword.language.haproxy" },
+              "6": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(option)([\\t ]+)(get-values|keep-conn|max-reqs|mpxs-conns)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(http-response|http-request)([\\t ]+)(set-log-level)([\\t ]+)(emerg|alert|crit|err|warning|notice|info|debug|silent)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "constant.language" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(http-response|http-request)([\\t ]+)(set-log-level)([\\t ]+)(\\S+)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "invalid.illegal" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(http-response)([\\t ]+)(add-acl|add-header|allow|cache-store|capture|del-acl|del-header|del-map|deny|redirect|replace-header|replace-value|return|sc-inc-gpc0|sc-inc-gpc1|sc-set-gpt0|send-spoe-group|set-header|set-log-level|set-map|set-mark|set-nice|set-status|set-tos|set-var|silent-drop|strict-mode|track-sc0|track-sc1|track-sc2|unset-var)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(http-request)([\\t ]+)(add-acl|add-header|allow|auth|cache-use|capture|del-acl|del-header|del-map|deny|disable-l7-retry|do-resolve|early-hint|redirect|reject|replace-header|replace-path|replace-uri|replace-value|return|sc-inc-gpc0|sc-inc-gpc1|sc-set-gpt0|set-dst-port|set-dst|set-header|set-log-level|set-map|set-mark|set-method|set-nice|set-path|set-priority-class|set-priority-offset|set-query|set-src-port|set-src|set-tos|set-uri|set-var|send-spoe-group|silent-drop|strict-mode|tarpit|track-sc0|track-sc2|track-sc3|unset-var|use-service|wait-for-handshake)(?=[\\t \\n\\r\\(])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(http-after-response)([\\t ]+)(add-header|allow|del-header|replace-header|replace-value|set-header|set-status|strict-mode)(?=[\\t \\n\\r\\(])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(tcp-check)([\\t ]+)(send-binary|expect|send|comment|connect)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(mailer)([\\t ]+)([a-zA-Z0-9\\_\\-\\.\\:]+)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(mailer)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(email-alert)([\\t ]+)(mailers|level|from|to)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(compression)([\\t ]+)(algo|offload|type)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(stats)([\\t ]+)(admin|auth|enable|hide-version|http-request|realm|refresh|scope|show-desc|show-legends|show-node|uri|socket|bind-process|timeout)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(mode)([\\t ]+)(http|tcp|health)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(hold)([\\t ]+)(other|refused|nx|timeout|valid|obsolete)([\\t ]+)([0-9]+)(us|ms|s|m|h|d)(?=[\\t \\r\\n])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "constant.numeric" },
+              "7": { "name": "constant.numeric" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(hold)([\\t ]+)(other|refused|nx|timeout|valid|obsolete)([\\t ]+)(.*)$",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "invalid.illegal" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(hold)([\\t ]+)(other|refused|nx|timeout|valid|obsolete)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(timeout)([\\t ]+)(check|client|client-fin|connect|http-keep-alive|http-request|queue|server|server-fin|tarpit|tunnel|resolve|retry)([\\t ]+)([0-9]+)(us|ms|s|m|h|d)(?=[\\t \\r\\n])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "constant.numeric" },
+              "7": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(timeout)([\\t ]+)(check|client|client-fin|connect|http-keep-alive|http-request|queue|server|server-fin|tarpit|tunnel|resolve|retry)([\\t ]+)([^0-9].*$)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "invalid.illegal" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(timeout)([\\t ]+)(check|client-fin|client|connect|http-keep-alive|http-request|queue|server-fin|server|tarpit|tunnel|resolve|retry)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(balance)([\\t ]+)(roundrobin|static-rr|leastconn|first|source|uri|queue|server-fin|server|tarpit|tunnel|random|rdp-cookie)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(balance)([\\t ]+)(random)(?=[\\(])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(log)([\\t ]+)(stdout|stderr|global)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(default-server)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(maxmind-update)([\\t ]+)(url|cache|update|show|status|force-update)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(maxmind-cache-size|maxmind-debug|maxmind-load|maxmind-update)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(netacuity-cache-size|netacuity-debug|netacuity-property-separator|netacuity-load|netacuity-update|netacuity-test-ipv4)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(command)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(stick)([\\t ]+)(match|on|store-request|store-response)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(user)(\\s+)(\\S+)(\\s+)(password|insecure-password)(\\s+)(\\S+)(\\s+)(groups)(\\s+)(\\S+)$",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "string.unquoted" },
+              "6": { "name": "support.function.haproxy" },
+              "8": { "name": "string.unquoted" },
+              "10": { "name": "support.function.haproxy" },
+              "12": { "name": "string.unquoted" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(user)(\\s+)(\\S+)(\\s+)(password|insecure-password)(\\s+)(\\S+)(\\s?)$",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "string.unquoted" },
+              "6": { "name": "support.function.haproxy" },
+              "8": { "name": "string.unquoted" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(group)(\\s+)(\\S+)(\\s+)(users)(\\s+)(\\S+)(\\s?)$",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "string.unquoted" },
+              "6": { "name": "support.function.haproxy" },
+              "8": { "name": "string.unquoted" }
+            }
+          },
+          {
+            "match": "^([\\t ]+)(group)(\\s+)(\\S+)(\\s+)(users)(\\s+)(\\S+)(\\s?)$",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "string.unquoted" },
+              "6": { "name": "support.function.haproxy" },
+              "8": { "name": "string.unquoted" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(capture)([\\t ]+)(cookie)([\\t ]+)(\\S+)([\\t ]+)(len)(\\s)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "string.unquoted" },
+              "8": { "name": "function" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(capture)([\\t ]+)(cookie)([\\t ]+)(\\S+)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "string.unquoted" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(capture)([\\t ]+)(cookie)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(capture)([\\t ]+)(response|request)([\\t ]+)(header)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" },
+              "6": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(tcp-request)([\\t ]+)(connection|content|inspect-delay|session)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(tcp-response)([\\t ]+)(content|inspect-delay)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(http-check)([\\t ]+)(comment|connect|disable-on-404|expect|send-state|send|setvar)",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" },
+              "4": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(acl|use_backend|server|default_backend|table)([\\t ]+)([a-zA-Z0-9\\_\\-\\.\\:]+)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "entity.name.type" },
+              "4": { "name": "variable.other" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(acl|use_backend|server|default_backend|table)([\\t ]+)(\\S+)",
+            "captures": {
+              "2": { "name": "entity.name.type" },
+              "4": { "name": "invalid.illegal" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(acl|use_backend|server|default_backend|table)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "entity.name.type" },
+              "4": { "name": "invalid.illegal" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(user|group|ca-base|chroot|cookie|crt-base|deviceatlas-json-file|h1-case-adjust-file|51degrees-data-file|wurfl-data-file|deviceatlas-properties-cookie|group|localpeer|node|lua-load|pidfile|server-state-base|server-state-file|ssl-dh-param-file|mailer|peer|table|nameserver|server-template|use-fcgi-app)([\\t ]+)(\\S+)",
+            "captures": {
+              "2": { "name": "entity.name.type" },
+              "4": { "name": "string.unquoted" }
+            }
+          },
+  
+          {
+            "match": "([\\t ])(groups|users)",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(master-worker|ca-base|chroot|crt-base|cpu-map|daemon|description|deviceatlas-json-file|deviceatlas-log-level|deviceatlas-separator|deviceatlas-properties-cookie|external-check|gid|group|hard-stop-after|h1-case-adjust|h1-case-adjust-file|insecure-fork-wanted|insecure-setuid-wanted|issuers-chain-path|localpeer|log-format|log-tag|log-send-hostname|log|lua-load|lua-prepend-path|mworker-max-reloads|nbproc|nbthread|node|pidfile|presetenv|resetenv|uid|ulimit-n|user|set-dumpable|setenv|stats|ssl-default-bind-ciphers|ssl-default-bind-ciphersuites|ssl-default-bind-options|ssl-default-bind-curves|ssl-default-server-ciphers|ssl-default-server-ciphersuites|ssl-default-server-options|ssl-dh-param-file|ssl-load-extra-files|ssl-server-verify|ssl-skip-self-issued-ca|unix-bind|unsetenv|51degrees-update|51degrees-data-file|51degrees-property-name-list|51degrees-property-separator|51degrees-cache-size|wurfl-update|wurfl-data-file|wurfl-information-list|wurfl-information-list-separator|wurfl-cache-size|strict-limits|busy-polling|max-spread-checks|maxconn|maxconnrate|maxcomprate|maxcompcpuusage|maxpipes|maxsessrate|maxsslconn|maxsslrate|maxzlibmem|noepoll|nokqueue|noevports|nopoll|nosplice|nogetaddrinfo|noreuseport|profiling.tasks|spread-checks|server-state-base|server-state-file-base|server-state-file|ssl-engine|ssl-mode-async|tune.buffers.limit|tune.buffers.reserve|tune.bufsize|tune.chksize|tune.comp.maxlevel|tune.h2.header-table-size|tune.h2.initial-window-size|tune.h2.max-concurrent-streams|tune.http.cookielen|tune.http.logurilen|tune.http.maxhdr|tune.idletimer|tune.lua.forced-yield|tune.lua.maxmem|tune.lua.session-timeout|tune.lua.task-timeout|tune.lua.service-timeout|tune.maxaccept|tune.maxpollevents|tune.maxrewrite|tune.pattern.cache-size|tune.pipesize|tune.pool-high-fd-ratio|tune.pool-low-fd-ratio|tune.rcvbuf.client|tune.rcvbuf.server|tune.recv_enough|tune.runqueue-depth|tune.sndbuf.client|tune.sndbuf.server|tune.ssl.cachesize|tune.ssl.lifetime|tune.ssl.force-private-cache|tune.ssl.maxrecord|tune.ssl.default-dh-param|tune.ssl.ssl-ctx-cache-size|tune.ssl.capture-cipherlist-size|tune.vars.global-max-size|tune.vars.proc-max-size|tune.vars.reqres-max-size|tune.vars.sess-max-size|tune.vars.txn-max-size|tune.zlib.memlevel|tune.zlib.windowsize|debug|quiet|module-path|module-load|send-metrics-url|send-metrics-header|send-metrics-content-type|send-metrics-data|send-metrics-debug|update|zero-warning)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(acl|backlog|balance|bind-process|bind|capture|compression|cookie|declare|default-server|default_backend|description|disabled|dispatch|email-alert|enabled|errorfiles|errorfile|errorloc303|errorloc302|errorloc|force-persist|filter|fullconn|grace|hash-type|http-after-response|http-check|http-request|http-response|http-reuse|http-send-name-header|id|ignore-persist|load-server-state-from-file|log-format-sd|log-format|log-tag|log|max-keep-alive-queue|maxconn|mode|monitor-uri|monitor-net|monitor|option|external-check|persist|rate-limit|redirect|retries|retry-on|server-state-file-name|server-template|server|source|stats|stick-table|stick|tcp-check|tcp-request|tcp-response|timeout|transparent|unique-id-format|unique-id-header|use_backend|use-fcgi-app|use-server)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+  
+          {
+            "match": "([\\t ])(accept-netscaler-cip|accept-proxy|allow-0rtt|alpn|backlog|ca-file|ca-ignore-err|ca-sign-file|ca-sign-pass|ca-verify-file|ciphers|ciphersuites|crl-file|crt|crt-ignore-err|crt-list|curves|defer-accept|ecdhe|expose-fd listeners|force-sslv3|force-tlsv10|force-tlsv11|force-tlsv12|force-tlsv13|generate-certificates|gid|group|id|interface|level|maxconn|mode|mss|namespace|name|nice|no-ca-names|no-sslv3|no-tls-tickets|no-tlsv10|no-tlsv11|no-tlsv12|no-tlsv13|npn|prefer-client-ciphers|process|proto|severity-output|ssl-max-ver|ssl-min-ver|ssl_fc|ssl|strict-sni|tcp-ut|tfo|tls-ticket-keys|transparent|uid|user|v4v6|v6only|verify)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "([\\t ])(addr|agent-check|agent-send|agent-inter|agent-addr|agent-port|allow-0rtt|alpn|backup|ca-file|check-send-proxy|check-alpn|check-sni|check-ssl|check-via-socks4|check|ciphers|ciphersuites|cookie|crl-file|crt|disabled|enabled|error-limit|fall|force-sslv3|force-tlsv10|force-tlsv11|force-tlsv12|force-tlsv13|id|init-addr|inter|fastinter|downinter|maxconn|maxqueue|max-reuse|minconn|namespace|no-agent-check|no-backup|no-check-ssl|no-check|no-send-proxy-v2-ssl-cn|no-send-proxy-v2-ssl|no-send-proxy-v2|no-send-proxy|no-sslv3|no-ssl-reuse|no-ssl|no-tls-tickets|no-tlsv13|no-tlsv12|no-tlsv11|no-tlsv10|no-verifyhost|no-tfo|non-stick|npn|observe|on-error|on-marked-down|on-marked-up|pool-low-conn|pool-max-conn|pool-purge-delay|port|proto|redir|rise|resolvers|resolve-opts|resolve-prefer|resolve-net|send-proxy-v2|send-proxy|proxy-v2-options|send-proxy-v2-ssl-cn|send-proxy-v2-ssl|slowstart|sni|source|ssl-max-ver|ssl-min-ver|ssl-reuse|ssl|stick|socks4|tcp-ut|tfo|track|tls-tickets|verifyhost|verify|weight)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "([\\t ])(track-sc0|track-sc1|track-sc2)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(accepted_payload_size|nameserver|parse-resolv-conf|hold|resolve_retries|timeout)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(total-max-size|max-object-size|max-age)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+  
+          {
+            "match": "^([\\t ]+)(path-info)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "keyword.language.haproxy" }
+            }
+          },
+  
+          {
+            "match": "([\\t ])(path_beg|path_dir|path_dom|path_end|path_len|path_reg|path_sub|path)(\\s+)(\\S+)(\\s+)(})",
+            "captures": {
+              "2": { "name": "entity.name.function" },
+              "4": { "name": "string" }
+            }
+          },
+          {
+            "match": "([\\t ])(path_beg|path_dir|path_dom|path_end|path_len|path_reg|path_sub|path)(\\s+)(.+)$",
+            "captures": {
+              "2": { "name": "entity.name.function" },
+              "4": { "name": "string" }
+            }
+          },
+          {
+            "match": "([\\t ])(path_beg|path_dir|path_dom|path_end|path_len|path_reg|path_sub|path)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+  
+          {
+            "match": "([\\t ])(url_beg|url_dir|url_dom|url_end|url_len|url_reg|url_sub|url)(\\s+)(\\S+)(\\s+)(})",
+            "captures": {
+              "2": { "name": "entity.name.function" },
+              "4": { "name": "string" }
+            }
+          },
+          {
+            "match": "([\\t ])(url_beg|url_dir|url_dom|url_end|url_len|url_reg|url_sub|url)(\\s+)(.+)$",
+            "captures": {
+              "2": { "name": "entity.name.function" },
+              "4": { "name": "string" }
+            }
+          },
+          {
+            "match": "([\\t ])(url_beg|url_dir|url_dom|url_end|url_len|url_reg|url_sub|url)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+  
+          {
+            "match": "([\\t ])(addr)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "([\\t ])(verify|none|crt|tfo|check-ssl|check|alpn)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "([\\t ])(accept-netscaler-cip|accept-proxy|allow-0rtt|alpn|backlog|ca-file|ca-ignore-err|ca-sign-file|ca-sign-pass|ciphers|ciphersuites|crl-file|crt|crt-ignore-err|crt-list|curves|defer-accept|ecdhe|expose-fd listeners|force-sslv3|force-tlsv10|force-tlsv11|force-tlsv12|force-tlsv13|generate-certificates|gid|group|id|interface|level|maxconn|mode|mss|namespace|name|nice|no-ca-names|no-sslv3|no-tls-tickets|no-tlsv10|no-tlsv11|no-tlsv12|no-tlsv13|npn|prefer-client-ciphers|process|proto|severity-output|ssl-max-ver|ssl-min-ver|ssl_fc|ssl|strict-sni|tcp-ut|tfo|tls-ticket-keys|transparent|uid|user|v4v6|v6only|verify)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+          {
+            "match": "(\\s)(location|scheme|prefix|random)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "(\\,|[\\t ])(type|size|store)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(len|expire)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+  
+          {
+            "match": "(\\,|[\\t ])(string|integer|ipv6|ip|binary)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.type" }
+            }
+          },
+  
+          {
+            "match": "([\\t ])(SSLv3|TLSv1.0|TLSv1\\.1|TLSv1\\.2|TLSv1\\.3)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "constant.language" }
+            }
+          },
+          {
+            "match": "([\\t ])(conn-failure|empty-response|junk-response|response-timeout|0rtt-rejected|except|nbsrv)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "(\\,|[\\t ])(gpc0|gpc1|conn_cnt|conn_cur|sess_cnt|http_req_cnt|http_err_cnt|bytes_in_cnt|bytes_out_cnt)(?=[\\,\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+  
+          {
+            "match": "(\\,|[\\t ])(gpc0_rate|gpc1_rate|conn_rate|sess_rate|http_req_rate|http_err_rate|bytes_in_rate|bytes_out_rate)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+  
+          {
+            "match": "(?<=[\\t ])(table)(?=[\\t \\n\\r])",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "(\\,|[\\t ])(51d\\.single|add|aes_gcm_dec|and|bytes|concat|crc32|crc32c|da-csv-conv|debug|digest|div|djb2|field|http_date|in_table|json|language|ltime|map|mod|mul|or|protobuf|regsub|capture-req|capture-res|sdbm|sha2|strcmp|sub|table_bytes_in_rate|table_bytes_out_rate|table_conn_cnt|table_conn_cur|table_conn_rate|table_gpt0|table_gpc0|table_gpc0_rate|table_gpc1|table_gpc1_rate|table_http_err_cnt|table_http_err_rate|table_http_req_cnt|table_http_req_rate|table_kbytes_in|table_kbytes_out|table_server_id|table_sess_cnt|table_sess_rate|table_trackers|url_dec|ungrpc|utime|word|wt6|xor|xxh32|xxh64)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(b64dec|base64|bool|cpl|even|hex|hex2i|length|lower|nbsrv|neg|not|odd|sha1|srv_queue|upper)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(avg_queue|be_conn|be_conn_free|be_sess_rate|bin|bool|connslots|date|distcc_body|distcc_param|env|fe_conn|fe_req_rate|fe_sess_rate|int|ipv4|ipv6|meth|nbsrv|queue|rand|uuid|srv_conn|srv_conn_free|srv_is_up|srv_queue|srv_sess_rate|str|table_avl|table_cnt|var)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(always_false|always_true|cpu_calls|cpu_ns_avg|cpu_ns_tot|date_us|hostname|lat_ns_avg|lat_ns_tot|nbproc|prio_class|prio_offset|proc|stopping|thread)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(fc_rtt|fc_rttvar|sc_bytes_in_rate|sc0_bytes_in_rate|sc1_bytes_in_rate|sc2_bytes_in_rate|sc_bytes_out_rate|sc0_bytes_out_rate|sc1_bytes_out_rate|sc2_bytes_out_rate|sc_clr_gpc0|sc0_clr_gpc0|sc1_clr_gpc0|sc2_clr_gpc0|sc_clr_gpc1|sc0_clr_gpc1|sc1_clr_gpc1|sc2_clr_gpc1|sc_conn_cnt|sc0_conn_cnt|sc1_conn_cnt|sc2_conn_cnt|sc_conn_cur|sc0_conn_cur|sc1_conn_cur|sc2_conn_cur|sc_conn_rate|sc0_conn_rate|sc1_conn_rate|sc2_conn_rate|sc_get_gpc0|sc0_get_gpc0|sc1_get_gpc0|sc2_get_gpc0|sc_get_gpc1|sc0_get_gpc1|sc1_get_gpc1|sc2_get_gpc1|sc_get_gpt0|sc0_get_gpt0|sc1_get_gpt0|sc2_get_gpt0|sc_gpc0_rate|sc0_gpc0_rate|sc1_gpc0_rate|sc2_gpc0_rate|sc_gpc1_rate|sc0_gpc1_rate|sc1_gpc1_rate|sc2_gpc1_rate|sc_http_err_cnt|sc0_http_err_cnt|sc1_http_err_cnt|sc2_http_err_cnt|sc_http_err_rate|sc0_http_err_rate|sc1_http_err_rate|sc2_http_err_rate|sc_http_req_cnt|sc0_http_req_cnt|sc1_http_req_cnt|sc2_http_req_cnt|sc_http_req_rate|sc0_http_req_rate|sc1_http_req_rate|sc2_http_req_rate|sc_inc_gpc0|sc0_inc_gpc0|sc1_inc_gpc0|sc2_inc_gpc0|sc_inc_gpc1|sc0_inc_gpc1|sc1_inc_gpc1|sc2_inc_gpc1|sc_kbytes_in|sc0_kbytes_in|sc1_kbytes_in|sc2_kbytes_in|sc_kbytes_out|sc0_kbytes_out|sc1_kbytes_out|sc2_kbytes_out|sc_sess_cnt|sc0_sess_cnt|sc1_sess_cnt|sc2_sess_cnt|sc_sess_rate|sc0_sess_rate|sc1_sess_rate|sc2_sess_rate|sc_tracked|sc0_tracked|sc1_tracked|sc2_tracked|sc_trackers|sc0_trackers|sc1_trackers|sc2_trackers|src_bytes_in_rate|src_bytes_out_rate|src_clr_gpc0|src_clr_gpc1|src_conn_cnt|src_conn_cur|src_conn_rate|src_get_gpc0|src_get_gpc1|src_get_gpt0|src_gpc0_rate|src_gpc1_rate|src_http_err_cnt|src_http_err_rate|src_http_req_cnt|src_http_req_rate|src_inc_gpc0|src_inc_gpc1|src_kbytes_in|src_kbytes_out|src_sess_cnt|src_sess_rate|src_updt_conn_cnt)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(bc_http_major|be_id|be_name|dst|dst_conn|dst_is_local|dst_port|fc_http_major|fc_pp_authority|fc_rcvd_proxy|fc_unacked|fc_sacked|fc_retrans|fc_fackets|fc_lost|fc_reordering|fe_defbe|fe_id|fe_name|so_id|so_name|src|src_is_local|src_port|srv_id|srv_name)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(51d\\.all|ssl_c_i_dn|ssl_c_s_dn|ssl_f_i_dn|ssl_f_s_dn)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(ssl_bc_alg_keysize|ssl_bc_alpn|ssl_bc_cipher|ssl_bc_client_random|ssl_bc_is_resumed|ssl_bc_npn|ssl_bc_protocol|ssl_bc_unique_id|ssl_bc_server_random|ssl_bc_session_id|ssl_bc_session_key|ssl_bc_use_keysize|ssl_bc|ssl_c_ca_err|ssl_c_ca_err_depth|ssl_c_der|ssl_c_err|ssl_c_key_alg|ssl_c_notafter|ssl_c_notbefore|ssl_c_serial|ssl_c_sha1|ssl_c_sig_alg|ssl_c_used|ssl_c_verify|ssl_c_version|ssl_f_der|ssl_f_key_alg|ssl_f_notafter|ssl_f_notbefore|ssl_f_serial|ssl_f_sha1|ssl_f_sig_alg|ssl_f_version|ssl_fc_alg_keysize|ssl_fc_alpn|ssl_fc_cipherlist_bin|ssl_fc_cipherlist_hex|ssl_fc_cipherlist_str|ssl_fc_cipherlist_xxh|ssl_fc_cipher|ssl_fc_client_random|ssl_fc_has_crt|ssl_fc_has_early|ssl_fc_has_sni|ssl_fc_is_resumed|ssl_fc_npn|ssl_fc_protocol|ssl_fc_unique_id|ssl_fc_server_random|ssl_fc_session_id|ssl_fc_session_key|ssl_fc_sni|ssl_fc_use_keysize|ssl_fc)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(payload_lv|payload|req\\.payload|req\\.payload_lv|req\\.rdp_cookie|rdp_cookie|req\\.rdp_cookie_cnt|rdp_cookie_cnt|res\\.payload_lv|res\\.payload)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(req\\.hdrs_bin|req\\.hdrs|req\\.len|req\\.proto_http|req\\.ssl_alpn|req\\.ssl_ec_ext|req\\.ssl_hello_type|req\\.ssl_sni|req\\.ssl_st_ext|req\\.ssl_ver|res\\.len|res\\.ssl_hello_type|wait_end|req_proto_http|req_ssl_hello_type|req_ssl_sni|req_ssl_ver|rep_ssl_hello_type|req_len)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(capture\\.req\\.hdr|capture\\.res\\.hdr|req\\.body_param|req\\.cook|cook|req\\.cook_cnt|cook_cnt|req\\.cook_val|cook_val|cookie|hdr|req\\.fhdr|req\\.fhdr_cnt|req\\.hdr|req\\.hdr_cnt|hdr_cnt|req\\.hdr_ip|hdr_ip|req\\.hdr_val|hdr_val|http_auth|http_auth_group|req\\.hdr_names|res\\.cook|scook|res\\.cook_cnt|scook_cnt|res\\.cook_val|scook_val|res\\.fhdr_cnt|res\\.fhdr|shdr|res\\.hdr_cnt|shdr_cnt|res\\.hdr_ip|shdr_ip|res\\.hdr_names|res\\.hdr_val|res\\.hdr|shdr_val|url_param|urlp_val|urlp|set-cookie)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(base32\\+src|base32|base|capture\\.req\\.method|capture\\.req\\.uri|capture\\.req\\.ver|capture\\.res\\.ver|req\\.body|req\\.body_len|req\\.body_size|http_auth_pass|http_auth_type|http_auth_user|http_first_req|method|path|query|req\\.ver|res\\.comp_algo|res\\.comp|res\\.ver|resp_ver|status|unique-id|url_ip|url_port|url32+src|url32|url)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(internal\\.htx_blk\\.size|internal\\.htx_blk\\.type|internal\\.htx_blk\\.data|internal\\.htx_blk\\.hdrname|internal\\.htx_blk\\.hdrval|internal\\.htx_blk\\.start_line)(?=[\\(|\\s])",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+          {
+            "match": "(\\,|[\\t ])(internal\\.htx\\.data|internal\\.htx\\.free|internal\\.htx\\.free_data|internal\\.htx\\.has_eom|internal\\.htx\\.nbblks|internal\\.htx\\.size|internal\\.htx\\.used|internal\\.strm\\.is_htx)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "entity.name.function" }
+            }
+          },
+  
+          {
+            "match": "(\\,|[\\t ])(FALSE|HTTP_1\\.0|HTTP_1\\.1|HTTP_CONTENT|HTTP_URL_ABS|HTTP_URL_SLASH|HTTP_URL_STAR|HTTP|LOCALHOST|METH_CONNECT|METH_DELETE|METH_GET|METH_HEAD|METH_OPTIONS|METH_POST|METH_PUT|METH_TRACE|RDP_COOKIE|REQ_CONTENT|TRUE|WAIT_END)(?=[\\t \\n\\r]|\\,)",
+            "captures": {
+              "2": { "name": "support.function.haproxy" }
+            }
+          },
+  
+          {
+            "match": "(\\s)(if|unless)(\\s+)([a-zA-Z0-9_-]+|!\\s?[a-zA-Z0-9_-]+)",
+            "captures": {
+              "2": { "name": "keyword.operator.haproxy" },
+              "4": { "name": "variable.other" }
+            }
+          },
+  
+          {
+            "match": "\\b(if|unless)\\b",
+            "captures": {
+              "1": { "name": "keyword.operator.haproxy" }
+            }
+          },
+  
+          {
+            "match": "(?<=\\s)(lt|gt|or|\\|\\||!)",
+            "captures": {
+              "1": { "name": "keyword.operator.haproxy" }
+            }
+          },
+  
+          {
+            "match": "(?<=[\\t \\(\\,])([0-9]+)(?=[\\t \\r\\n\\)\\,])",
+            "captures": {
+              "1": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "(?<=[\\t \\(\\,])([0-9]+)(us|k|ms|s|m|h|d)(?=[\\t \\r\\n\\)\\,])",
+            "captures": {
+              "1": { "name": "constant.numeric" },
+              "2": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "([\\t ]|,)([0-9]+(?:\\.[0-9]+){3})(\\/[0-9]+)?",
+            "captures": {
+              "2": { "name": "constant.numeric" },
+              "3": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "([\\t ]|,)([0-9]+(?:\\.[0-9]+){3})(:[0-9]+)?",
+            "captures": {
+              "2": { "name": "constant.numeric" },
+              "3": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "(:+)([0-9]+)",
+            "captures": {
+              "2": { "name": "constant.numeric" }
+            }
+          },
+          {
+            "match": "(\\*)(:+)([0-9]+)",
+            "captures": {
+              "2": { "name": "keyword.operator" },
+              "3": { "name": "constant.numeric" }
+            }
+          }
+        ]
+      },
+      "strings": {
+        "name": "string.quoted.double.haproxy",
+        "begin": "\"",
+        "end": "\"",
+        "patterns": [
+          {
+            "name": "constant.character.escape.haproxy",
+            "match": "\\\\."
+          }
+        ]
+      }
+    }
+  }
+  

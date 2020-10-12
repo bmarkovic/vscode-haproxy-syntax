@@ -24,5 +24,11 @@
         ["(", ")"],
         ["\"", "\""],
         ["'", "'"]
-    ]
+    ],
+    "folding": {
+        "markers": {
+          "start": "^(dynamic-update|fcgi-app|backend|cache|defaults|frontend|global|listen|mailers|peers|program|resolvers|ruleset|userlist|aggregations|director|ring|http-errors).*$",
+          "end": "^(dynamic-update|fcgi-app|backend|cache|defaults|frontend|global|listen|mailers|peers|program|resolvers|ruleset|userlist|aggregations|director|ring|http-errors)"
+        }
+    }
 }
