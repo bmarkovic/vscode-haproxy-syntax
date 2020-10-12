@@ -4,14 +4,14 @@
     "scopeName": "source.haproxy",
     "patterns": [
       {
-        "include": "#crap"
+        "include": "#keywords"
       },
       {
         "include": "#strings"
       }
     ],
     "repository": {
-      "crap": {
+      "keywords": {
         "patterns": [
           {
             "match": "^#.*$",
