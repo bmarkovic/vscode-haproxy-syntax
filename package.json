@@ -18,10 +18,14 @@
 				"aliases": [
 					"HAProxy",
 					"haproxy",
-					"Haproxy"
+					"Haproxy",
+					"hapee",
+					"Hapee",
+					"hapee-lb"
 				],
 				"extensions": [
-					"haproxy.cfg"
+					"haproxy.cfg",
+					"hapee-lb.cfg"
 				],
 				"configuration": "./language-configuration.json"
 			}
@@ -30,7 +34,7 @@
 			{
 				"language": "haproxy",
 				"scopeName": "source.haproxy",
-				"path": "./syntaxes/Haproxy.tmLanguage"
+				"path": "./syntaxes/Haproxy.tmLanguage.json"
 			}
 		],
 		"snippets": [
