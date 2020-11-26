@@ -1,5 +1,7 @@
 # HAProxy for Visual Studio Code
 
+> **Moved:** https://github.com/haproxytech/vscode-haproxy-syntax
+
 This is the syntax highlighter for HAProxy/HAPEE configuration files, based on
 [sublime-haproxy](https://github.com/ramonfritsch/sublime-haproxy) Sublime Text
 package.
